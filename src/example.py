@@ -5,25 +5,32 @@ License::   Distributed under Creative Commons CC-BY license http://creativecomm
 """
 
 import PythonCarrotDev
-
 import requests
 import simplejson
 from requests.auth import HTTPBasicAuth
 
-vb_carrot = PythonCarrotDev.VBCarrot('85','de52c722a40ea875ce89ae134a9ad66071144f5e', 'https://api.local.voicebunny.com')
-response = vb_carrot.gender_ages()
-print response['genderandages']
+vb_carrot = PythonCarrotDev.VBCarrot('xx','xxxxXXXXxxxxXXXX')
 
-project={
-    'script': "Test project",
-    'specialInstructions': "Posted from Ruby-Carrot",
-    'title' : "Test Project" 
-}
-response = vb_carrot.create_project(project)
-print response['project']
+balance = vb_carrot.balance()
+print "Your account balance is: "+ balance['balance']['amount'] +" "+ balance['balance']['currency']
+current_balance = float(balance['balance']['amount'])
 
-response = vb_carrot.get_project(response['project']['id'])
-print response['projects']
+script = "What's up , folks?"
+quote = vb_carrot.quote(script)
+print "Posting this script will cost: "+ quote['quote']['rewardAmount'] +" "+ quote['quote']['rewardCurrency']
+reward = float(quote['quote']['rewardAmount'])
 
+if current_balance >= reward:
+    project = {
+        'script': script,
+        'specialInstructions': "I want the voice be similar to Bugs Bunny.",
+        'rewardAmount':reward,
+        'rewardCurrency': 'usd',
+        'test': '1'
+    }
+    vb_carrot.create_project(project)
+    print "Project successfully posted."
+else:
+    print "You dont have enough money to post this project."
 
 raw_input()

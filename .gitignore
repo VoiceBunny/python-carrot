@@ -2,4 +2,4 @@
 .project
 .pydevproject
 *.pyc
-local_scr/
+local_src/
