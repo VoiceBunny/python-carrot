@@ -1,14 +1,12 @@
-# Filename: PythonCarrot.py
+# Filename: PythonCarrotDev.py
 import requests
 import simplejson
 from requests.auth import HTTPBasicAuth
 
 class VBCarrot:
 
-    
-
     def say_hi():
-        print 'Hi, this is the python carrot.'
+        print 'Hi, folks!'
 
     def __init__(self, api_id, api_key, dev=False):
         self.api_id = api_id
@@ -16,7 +14,7 @@ class VBCarrot:
         if dev:
             self.url = 'http://127.0.0.1:8080/test' 
         else:
-            self.url = 'https://api.dev.voicebunny.com'
+            self.url = 'https://api.local.voicebunny.com'
 
     def languages(self):
         req = requests.get(self.url+'/languages.json',
@@ -96,6 +94,6 @@ class VBCarrot:
         return data
 
 
-version = '0.5'
+version = '0.6.5'
 
-# End of PythonCarrot.py
+# End of PythonCarrotDev.py

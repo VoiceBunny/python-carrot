@@ -4,7 +4,7 @@ Copyright:: Copyright (c) 2008 Torrenegra IP, LLC.
 License::   Distributed under Creative Commons CC-BY license http://creativecommons.org/licenses/by/3.0/
 """
 
-# Filename: PythonCarrot.py
+# Filename: PythonCarrotDev.py
 import requests
 import simplejson
 from requests.auth import HTTPBasicAuth
@@ -12,12 +12,15 @@ from requests.auth import HTTPBasicAuth
 class VBCarrot:
 
     def say_hi():
-        print 'Hi, this is the python carrot.'
+        print 'Hi, folks!'
 
-    def __init__(self, api_id, api_key, dev=False):
+
+    # http://127.0.0.1:8080/test URL for test with mocks
+    # https://api.local.voicebunny.com Local enviroment
+    def __init__(self, api_id, api_key, url):
         self.api_id = api_id
         self.api_key = api_key
-        self.url = 'https://api.voicebunny.com'
+        self.url = url
 
     def languages(self):
         req = requests.get(self.url+'/languages.json',
@@ -51,16 +54,7 @@ class VBCarrot:
 
     def create_project(self, project):
         req = requests.post(self.url+'/projects/add.json',
-            data={
-                'title': project['title'],
-                'script': project['script'],
-                'rewardAmount': str(project['rewardAmount']),
-                'rewardcurrency': project['rewardcurrency'],
-                'language': project['language'],
-                'genderAndAge': project['genderAndAge'],
-                'lifetime': str(project['lifetime']),
-                'specialinstructions': project['specialinstructions']
-            }, 
+            project, 
             auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
         data = simplejson.loads(req.text)
         return data
@@ -97,6 +91,6 @@ class VBCarrot:
         return data
 
 
-version = '0.5'
+version = '0.6.5'
 
-# End of PythonCarrot.py
+# End of PythonCarrotDev.py
