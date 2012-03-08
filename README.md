@@ -3,9 +3,15 @@
 [Python Carrot](https://github.com/Voice123/python-carrot) is a Python module that provides connection to the [VoiceBunny.com](http://voicebunny.com) HTTP RESTful API, using the library [Requests](https://github.com/kennethreitz/requests) for the HTTP request/response cycle.
 If you need more information on how to use our module check the [installation guide](https://github.com/Voice123/python-carrot/wiki/installation) or the [tutorial](https://github.com/Voice123/python-carrot/wiki/Use-tutorial).
 
-### Usage
+### Basic usage
 
 ```python
+# Imports
+import PythonCarrotDev
+import requests
+import simplejson
+from requests.auth import HTTPBasicAuth
+
 # Initialize the module
 vb_carrot = PythonCarrot.VBCarrot('0','XXX')
 

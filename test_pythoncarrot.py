@@ -5,12 +5,13 @@ License::   Distributed under Creative Commons CC-BY license http://creativecomm
 """
 
 import unittest
-import PythonCarrot
+from src import PythonCarrotDev 
+
 
 class TestPythonCarrot(unittest.TestCase):
 
     def setUp(self):
-        self.pc= PythonCarrot.VBCarrot('1','XXXX', True)
+        self.pc= PythonCarrotDev.VBCarrot('1','XXXX', 'http://127.0.0.1:8080/test')
 
     def test_balance(self):
         response = self.pc.balance()

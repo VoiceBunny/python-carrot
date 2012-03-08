@@ -71,9 +71,13 @@ class VBCarrot:
         data = simplejson.loads(req.text)
         return data
 
-    def quote(self, text):
+    def quote(self, text, contest=0, maxEntries=3):
         req = requests.post(self.url+'/projects/quote.json', 
-            data={'script': text},
+            data={
+                'script': text,
+                'contest': contest,
+                'maxContestEntries': maxEntries
+            },
             auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
         data = simplejson.loads(req.text)
         return data
