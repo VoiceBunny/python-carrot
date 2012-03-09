@@ -1,7 +1,7 @@
 # Python Carrot - VoiceBunny Library
 
-[Python Carrot](https://github.com/Voice123/python-carrot) is a Python module that provides connection to the [VoiceBunny.com](http://voicebunny.com) HTTP RESTful API, using the library [Requests](https://github.com/kennethreitz/requests) for the HTTP request/response cycle.
-If you need more information on how to use our module check the [installation guide](https://github.com/Voice123/python-carrot/wiki/installation) or the [tutorial](https://github.com/Voice123/python-carrot/wiki/Use-tutorial).
+[Python Carrot](https://github.com/VoiceBunny/python-carrot) is a Python module that provides connection to the [VoiceBunny.com](http://voicebunny.com) HTTP RESTful API, using the library [Requests](https://github.com/kennethreitz/requests) for the HTTP request/response cycle.
+If you need more information on how to use our module check the [installation guide](https://github.com/VoiceBunny/python-carrot/wiki/installation) or the [tutorial](https://github.com/VoiceBunny/python-carrot/wiki/Use-tutorial).
 
 ### Basic usage
 
@@ -33,14 +33,15 @@ response = vb_carrot.get_project(response['project']['id'])
 print response['projects']
 ```
 
-### Request a VoiceBunny API Key
-To use this library you need to request an API Key in the [VoiceBunny.com Developer's Section](http://voicebunny.com/developers/token).
+### Request a VoiceBunny API Token
+To use this library you need to request an API Token in the [VoiceBunny.com Developer's Section](http://voicebunny.com/developers/token).
 
 ### Don't you like Python?
 If you're not confortable with Python language, you can also check our other libraries
 
-* [Ruby Carrot](https://github.com/Voice123/ruby-carrot)
-* Groovy Carrot (Coming Soon)
+* [Ruby Carrot](https://github.com/VoiceBunny/ruby-carrot)
+* [Groovy Carrot](https://github.com/VoiceBunny/groovy-carrot)
+* [PHP Carrot](https://github.com/VoiceBunny/php-carrot)
 
 Or why not, build your own library/module from scratch checking the [API documentation](http://voicebunny.com/developers/index).
 
