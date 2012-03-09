@@ -22,7 +22,7 @@ print response['genderandages']
 # Post project
 project={
     'script': "Test project",
-    'specialInstructions': "Posted from Ruby-Carrot",
+    'specialInstructions': "Posted from Python-Carrot",
     'title' : "Test Project" 
 }
 response = vb_carrot.create_project(project)
