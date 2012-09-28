@@ -53,7 +53,15 @@ class VBCarrot:
         return data
 
     def create_project(self, project):
-        req = requests.post(self.url+'/projects/add.json',
+        print project
+        req = requests.post(self.url+'/projects/addSpeedy.json',
+            data=project, 
+            auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
+        data = simplejson.loads(req.text)
+        return data
+
+    def create_booking_project(self, project):
+        req = requests.post(self.url+'/projects/addBooking.json',
             project, 
             auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
         data = simplejson.loads(req.text)
@@ -65,13 +73,23 @@ class VBCarrot:
         data = simplejson.loads(req.text)
         return data
 
-    def quote(self, text, contest=0, maxEntries=3):
+    def quote(self, params):
         req = requests.post(self.url+'/projects/quote.json', 
-            data={
-                'script': text,
-                'contest': contest,
-                'maxContestEntries': maxEntries
-            },
+            params,
+            auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
+        data = simplejson.loads(req.text)
+        return data
+
+    def revision_quote(self, read_id, params):
+        req = requests.post(self.url+'/reads/'+str(read_id)+'/revision/quote.json', 
+            params,
+            auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
+        data = simplejson.loads(req.text)
+        return data
+
+    def revision_add(self, read_id, params):
+        req = requests.post(self.url+'/reads/'+str(read_id)+'/revision/add.json', 
+            params,
             auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
         data = simplejson.loads(req.text)
         return data
@@ -94,7 +112,21 @@ class VBCarrot:
         data = simplejson.loads(req.text)
         return data
 
+    def revision_quote(self, read_id, params):
+        req = requests.post(self.url+'/reads/'+str(read_id)+'/revision/quote.json', 
+            params,
+            auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
+        data = simplejson.loads(req.text)
+        return data
 
-version = '0.6.5'
+    def revision_add(self, read_id, params):
+        req = requests.post(self.url+'/reads/'+str(read_id)+'/revision/add.json', 
+            params,
+            auth=HTTPBasicAuth(self.api_id, self.api_key),verify=False)
+        data = simplejson.loads(req.text)
+        return data
+
+
+version = '0.7.1'
 
 # End of PythonCarrotDev.py

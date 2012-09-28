@@ -5,7 +5,7 @@ License::   Distributed under Creative Commons CC-BY license http://creativecomm
 """
 
 __title__ = 'python-carrot'
-__version__ = '0.6.5'
+__version__ = '0.7.1'
 __build__ = 0x006005
 __author__ = 'Jorge Vargas'
 __license__ = 'CC BY'

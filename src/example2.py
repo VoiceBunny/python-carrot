@@ -15,39 +15,36 @@ balance = vb_carrot.balance()
 print "Your account balance is: "+ balance['balance']['amount'] +" "+ balance['balance']['currency']
 current_balance = float(balance['balance']['amount'])
 
-#script = '{"part001": "Hi", "part002": "World", "part003": "Bye, I have to go"}'
-script = {
-    "part001":"Hi",
-    "part002":"World",
-    "part003":"Bye, I have to go"
-}
-
+script = "What's up , folks?"
 language = "eng-us"
+talentId = 6
 
 quoteData = {
     "script": script,
-    "language": language
+    "language": language,
+    "fulfilmentType": 'booking',
+    "talentID": talentId
 }
 
 quote = vb_carrot.quote(quoteData)
 price = str(quote['quote']['price'])
-print "Posting this script will cost: "+ price +" "+ quote['quote']['currency']
+print "Posting this booking will cost: "+ price +" "+ quote['quote']['currency']
 reward = float(quote['quote']['price'])
 
 if current_balance >= reward:
-    # Remember to send the script argument always as a json string when using multiparts
     project = {
         'title': 'project posted from Python Carrot',
-        'script': simplejson.dumps(script),
+        'script': script,
         'remarks': "I want the voice be similar to Bugs Bunny.",
         'price':reward,
-        'test': '1'
+        'test': '1',
+        'talentID': talentId
     }
     response = vb_carrot.create_project(project)
     if 'error' in response:
         print "Something happened: "+ response['error']['message']
     else:
-        print "Project ID:"+response['project']['id']+" successfully posted."
+        print "Project successfully posted."
 else:
     print "You dont have enough money to post this project."
 
